@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:global_bottom_navigation_bar/widgets/bottom_navigation_item.dart';
 import 'package:global_bottom_navigation_bar/widgets/scaffold_bottom_navigation.dart';
-import 'package:pad_penny/features/home_page.dart';
 
+import '../logic/ui/add_spend_page.dart';
 import '../logic/ui/common_expenses.dart';
 import '../logic/ui/my_spend.dart';
 import '../logic/ui/totals.dart';
@@ -20,6 +20,7 @@ class _BottomNavigationState extends State<BottomNavigation> with TickerProvider
   Widget build(BuildContext context) {
     return ScaffoldGlobalBottomNavigation(
       listOfChild: const [
+        AddSpendPage(),
         MySpend(),
         CommonExpenses(),
         Totals(),
@@ -29,6 +30,21 @@ class _BottomNavigationState extends State<BottomNavigation> with TickerProvider
   }
 
   List<BottomNavigationItem> buildBottomNavigationItemList() => [
+    BottomNavigationItem(
+      activeIcon: const Icon(
+        Icons.add,
+        color: Colors.amber,
+        size: 18,
+      ),
+      inActiveIcon: const Icon(
+        Icons.add_outlined,
+        color: Colors.grey,
+        size: 21,
+      ),
+      title: 'Ajouter',
+      color: Colors.white,
+      vSync: this,
+    ),
     BottomNavigationItem(
       activeIcon: const Icon(
         Icons.person,

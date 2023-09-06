@@ -1,13 +1,20 @@
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 import 'core/firebase_initializer.dart';
+import 'features/auth/providers/user_model.dart';
 import 'features/auth/ui/auth_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeFirebase();
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => UserModel(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
