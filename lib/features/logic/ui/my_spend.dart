@@ -47,17 +47,18 @@ class _MySpendState extends State<MySpend> {
             spends.add(element);
           });
 
+          double totalValue = 0.0;
+
+          for (var spend in spends) {
+            totalValue += double.parse(spend['value'].toString());
+          }
+
           return Column(
             children: [
-              /*Container(
-                margin: const EdgeInsets.only(top: 10, bottom: 5),
-                child: OutlinedButton(
-                    onPressed: () {
-
-                    },
-                    child: const Text("Ajouter une dépense"),
-                ),
-              ),*/
+              Container(
+                margin: const EdgeInsets.only(top: 25, bottom: 20),
+                child: Text("Total : $totalValue", style: GoogleFonts.poppins())
+              ),
               Expanded(
                 child: ListView.builder(
                   itemCount: spends.length,
