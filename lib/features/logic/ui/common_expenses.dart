@@ -56,7 +56,7 @@ class _CommonExpensesState extends State<CommonExpenses> {
             children: [
               Container(
                 margin: const EdgeInsets.only(top: 25, bottom: 20),
-                child: Text("Total : $totalValue", style: GoogleFonts.poppins())
+                child: Text("Total : $totalValue €", style: GoogleFonts.poppins())
               ),
               Expanded(
                 child: ListView.builder(

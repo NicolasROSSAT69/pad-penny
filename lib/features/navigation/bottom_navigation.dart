@@ -20,10 +20,10 @@ class _BottomNavigationState extends State<BottomNavigation> with TickerProvider
   Widget build(BuildContext context) {
     return ScaffoldGlobalBottomNavigation(
       listOfChild: const [
-        AddSpendPage(),
+        Totals(),
         MySpend(),
         CommonExpenses(),
-        Totals(),
+        AddSpendPage(),
       ],
       listOfBottomNavigationItem: buildBottomNavigationItemList(),
     );
@@ -32,16 +32,16 @@ class _BottomNavigationState extends State<BottomNavigation> with TickerProvider
   List<BottomNavigationItem> buildBottomNavigationItemList() => [
     BottomNavigationItem(
       activeIcon: const Icon(
-        Icons.add,
+        Icons.calculate,
         color: Colors.amber,
         size: 18,
       ),
       inActiveIcon: const Icon(
-        Icons.add_outlined,
+        Icons.calculate_outlined,
         color: Colors.grey,
         size: 21,
       ),
-      title: 'Ajouter',
+      title: 'Totals',
       color: Colors.white,
       vSync: this,
     ),
@@ -77,16 +77,16 @@ class _BottomNavigationState extends State<BottomNavigation> with TickerProvider
     ),
     BottomNavigationItem(
       activeIcon: const Icon(
-        Icons.calculate,
+        Icons.add,
         color: Colors.amber,
         size: 18,
       ),
       inActiveIcon: const Icon(
-        Icons.calculate_outlined,
+        Icons.add_outlined,
         color: Colors.grey,
         size: 21,
       ),
-      title: 'Totals',
+      title: 'Ajouter',
       color: Colors.white,
       vSync: this,
     ),
