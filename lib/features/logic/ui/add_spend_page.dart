@@ -195,7 +195,8 @@ class _AddSpendPageState extends State<AddSpendPage> {
                             'personfor': selectedPersonFor,
                             'tag': selectedTag,
                             'uid': userModel.userId,
-                            'date': selectedDate
+                            'date': selectedDate,
+                            'payfor': userModel.userName.split(" ")[0]
                           });
                           selectedDate = DateTime.now();
                           selectedCategory = "Autre";

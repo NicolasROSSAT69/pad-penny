@@ -5,7 +5,7 @@ import 'package:global_bottom_navigation_bar/widgets/scaffold_bottom_navigation.
 import '../logic/ui/add_spend_page.dart';
 import '../logic/ui/common_expenses.dart';
 import '../logic/ui/my_spend.dart';
-import '../logic/ui/totals.dart';
+import '../logic/ui/widgets/total/totals.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});

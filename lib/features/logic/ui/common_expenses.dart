@@ -79,7 +79,7 @@ class _CommonExpensesState extends State<CommonExpenses> {
                       child: ListTile(
                         leading: Text("${value.toStringAsFixed(2)} €", style: GoogleFonts.poppins()),
                         title: Text('$category', style: GoogleFonts.poppins()),
-                        subtitle: Text('$comment, $tag', style: GoogleFonts.poppins()),
+                        subtitle: Text('$comment, $tag, payé par ${spend['payfor']}', style: GoogleFonts.poppins()),
                         trailing: const Icon(Icons.info),
                       ),
                     );
