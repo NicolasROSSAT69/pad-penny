@@ -16,6 +16,7 @@ class _TotalsState extends State<Totals> {
   Widget build(BuildContext context) {
     return const Column(
       children: [
+        SizedBox(height: 20),
         TotalMySpend(),
         TotalCommonExpenses()
       ],

@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CardTotal extends StatefulWidget {
 
-  final IconData leadingIcon;
+  final IconData? leadingIcon;
   final String title;
   final String trailingText;
   final double currentValue;
@@ -11,7 +11,7 @@ class CardTotal extends StatefulWidget {
 
   const CardTotal({
     Key? key,
-    required this.leadingIcon,
+    this.leadingIcon,
     required this.title,
     required this.trailingText,
     required this.currentValue,
@@ -31,7 +31,7 @@ class _CardTotalState extends State<CardTotal> {
         child: Column(
           children: [
             ListTile(
-              leading: Icon(widget.leadingIcon),
+              leading: widget.leadingIcon != null ? Icon(widget.leadingIcon) : null,
               title: Text(widget.title, style: GoogleFonts.poppins()),
               trailing: Text(widget.trailingText, style: GoogleFonts.poppins()),
             ),
