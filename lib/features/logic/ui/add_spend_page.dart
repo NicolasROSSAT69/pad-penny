@@ -203,6 +203,8 @@ class _AddSpendPageState extends State<AddSpendPage> {
                           commentController.text = "";
                           valueController.text = "";
                           selectedTag = 'Ponctuel';
+
+                          setState(() {}); // rafraîchir la vue
                         }
                       },
                       child: Text("Ajouter", style: GoogleFonts.poppins())

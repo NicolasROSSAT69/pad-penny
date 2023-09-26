@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 class CardTotal extends StatefulWidget {
 
   final IconData? leadingIcon;
-  final String title;
+  final String? title;
   final String trailingText;
   final double currentValue;
   final double maxValue;
@@ -12,7 +12,7 @@ class CardTotal extends StatefulWidget {
   const CardTotal({
     Key? key,
     this.leadingIcon,
-    required this.title,
+    this.title,
     required this.trailingText,
     required this.currentValue,
     required this.maxValue,
@@ -32,7 +32,7 @@ class _CardTotalState extends State<CardTotal> {
           children: [
             ListTile(
               leading: widget.leadingIcon != null ? Icon(widget.leadingIcon) : null,
-              title: Text(widget.title, style: GoogleFonts.poppins()),
+              title: widget.title != null ? Text(widget.title ?? '', style: GoogleFonts.poppins()) : null,
               trailing: Text(widget.trailingText, style: GoogleFonts.poppins()),
             ),
             LinearProgressIndicator(

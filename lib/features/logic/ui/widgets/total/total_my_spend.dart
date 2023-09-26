@@ -43,15 +43,124 @@ class _TotalMySpendState extends State<TotalMySpend> {
           totalValue += double.parse(document['value']) ?? 0;
         });
 
-        return CardTotal(
-          leadingIcon: Icons.functions,
-          title: 'Total de mes dépenses',
-          trailingText: '${totalValue.toStringAsFixed(2)} €',
-          currentValue: totalValue,
-          maxValue: 1300,
+        return Column(
+          children: [
+            CardTotal(
+              leadingIcon: Icons.functions,
+              title: 'Total de mes dépenses',
+              trailingText: '${totalValue.toStringAsFixed(2)} €',
+              currentValue: totalValue,
+              maxValue: 1300,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                FutureBuilder(
+                    future: getFilterMySpend(userModel.userId, names[0], "Loisir"),
+                    builder: (BuildContext context, AsyncSnapshot<double> filterSnapshot) {
+                      if (filterSnapshot.connectionState ==
+                          ConnectionState.waiting) {
+                        return const CircularProgressIndicator();
+                      }
+
+                      double filterValue = filterSnapshot.data ?? 0;
+
+                      return Expanded(
+                          child: CardTotal(
+                            leadingIcon: Icons.local_activity,
+                            trailingText: '${(filterValue).toStringAsFixed(2)} €',
+                            currentValue: filterValue,
+                            maxValue: totalValue,
+                          ),
+                      );
+                    }
+                ),
+                FutureBuilder(
+                    future: getFilterMySpend(userModel.userId, names[0], "Alimentaire"),
+                    builder: (BuildContext context, AsyncSnapshot<double> filterSnapshot) {
+                      if (filterSnapshot.connectionState ==
+                          ConnectionState.waiting) {
+                        return const CircularProgressIndicator();
+                      }
+
+                      double filterValue = filterSnapshot.data ?? 0;
+
+                      return Expanded(
+                        child: CardTotal(
+                          leadingIcon: Icons.food_bank,
+                          trailingText: '${(filterValue).toStringAsFixed(2)} €',
+                          currentValue: filterValue,
+                          maxValue: totalValue,
+                        ),
+                      );
+                    }
+                )
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                FutureBuilder(
+                    future: getFilterMySpend(userModel.userId, names[0], "Essence"),
+                    builder: (BuildContext context, AsyncSnapshot<double> filterSnapshot) {
+                      if (filterSnapshot.connectionState ==
+                          ConnectionState.waiting) {
+                        return const CircularProgressIndicator();
+                      }
+
+                      double filterValue = filterSnapshot.data ?? 0;
+
+                      return Expanded(
+                        child: CardTotal(
+                          leadingIcon: Icons.local_gas_station,
+                          trailingText: '${(filterValue).toStringAsFixed(2)} €',
+                          currentValue: filterValue,
+                          maxValue: totalValue,
+                        ),
+                      );
+                    }
+                ),
+                FutureBuilder(
+                    future: getFilterMySpend(userModel.userId, names[0], "Autre"),
+                    builder: (BuildContext context, AsyncSnapshot<double> filterSnapshot) {
+                      if (filterSnapshot.connectionState ==
+                          ConnectionState.waiting) {
+                        return const CircularProgressIndicator();
+                      }
+
+                      double filterValue = filterSnapshot.data ?? 0;
+
+                      return Expanded(
+                        child: CardTotal(
+                          leadingIcon: Icons.attach_money,
+                          trailingText: '${(filterValue).toStringAsFixed(2)} €',
+                          currentValue: filterValue,
+                          maxValue: totalValue,
+                        ),
+                      );
+                    }
+                )
+              ],
+            )
+          ],
         );
       },
     );
+  }
+  Future<double> getFilterMySpend(String uid, String name, String filter) async {
+    QuerySnapshot snapshot = await FirebaseFirestore.instance
+        .collection("spend")
+        .where('uid', isEqualTo: uid)
+        .where('personfor', isEqualTo: "Nicolas")
+        .where('category', isEqualTo: filter)
+        .get();
+
+    double total = 0.0;
+    snapshot.docs.forEach((document) {
+      total += double.parse(document['value']) ?? 0;
+    });
+
+    return total;
   }
 }
 
