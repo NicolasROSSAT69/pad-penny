@@ -35,11 +35,13 @@ class _CardTotalState extends State<CardTotal> {
               title: widget.title != null ? Text(widget.title ?? '', style: GoogleFonts.poppins()) : null,
               trailing: Text(widget.trailingText, style: GoogleFonts.poppins()),
             ),
-            LinearProgressIndicator(
+            widget.currentValue != 0 && widget.maxValue != 0
+                ? LinearProgressIndicator(
               value: widget.currentValue / widget.maxValue,
               color: Colors.teal,
               backgroundColor: Colors.grey[200],
-            ),
+            )
+                : Container(),
           ],
         ),
       ),
