@@ -33,7 +33,7 @@ class _BottomNavigationState extends State<BottomNavigation> with TickerProvider
     BottomNavigationItem(
       activeIcon: const Icon(
         Icons.calculate,
-        color: Colors.amber,
+        color: Colors.teal,
         size: 18,
       ),
       inActiveIcon: const Icon(
@@ -48,7 +48,7 @@ class _BottomNavigationState extends State<BottomNavigation> with TickerProvider
     BottomNavigationItem(
       activeIcon: const Icon(
         Icons.person,
-        color: Colors.amber,
+        color: Colors.teal,
         size: 18,
       ),
       inActiveIcon: const Icon(
@@ -63,7 +63,7 @@ class _BottomNavigationState extends State<BottomNavigation> with TickerProvider
     BottomNavigationItem(
       activeIcon: const Icon(
         Icons.group,
-        color: Colors.amber,
+        color: Colors.teal,
         size: 18,
       ),
       inActiveIcon: const Icon(
@@ -78,7 +78,7 @@ class _BottomNavigationState extends State<BottomNavigation> with TickerProvider
     BottomNavigationItem(
       activeIcon: const Icon(
         Icons.add,
-        color: Colors.amber,
+        color: Colors.teal,
         size: 18,
       ),
       inActiveIcon: const Icon(
