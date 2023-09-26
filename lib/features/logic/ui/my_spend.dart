@@ -87,9 +87,9 @@ class _MySpendState extends State<MySpend> {
                           onPressed: () async {
                             final docId = spends[index].id;
                             await FirebaseFirestore.instance.collection('spend').doc(docId).delete();
-                            ScaffoldMessenger.of(context).showSnackBar(
+                            /*ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text("Dépense supprimée")),
-                            );
+                            );*/
                             setState(() {}); // rafraîchir la vue
                           },
                         ),
