@@ -55,12 +55,12 @@ class _TotalCommonExpensesState extends State<TotalCommonExpenses> {
             ),
             FutureBuilder<double>(
               future: getCurrentUserCommonExpenses(userModel.userId, names[0]),
-              builder: (BuildContext context, AsyncSnapshot<double> nicolasSnapshot) {
-                if (nicolasSnapshot.connectionState == ConnectionState.waiting) {
+              builder: (BuildContext context, AsyncSnapshot<double> currentUserSnapshot) {
+                if (currentUserSnapshot.connectionState == ConnectionState.waiting) {
                   return const CircularProgressIndicator();
                 }
 
-                double currentUserValue = nicolasSnapshot.data ?? 0;
+                double currentUserValue = currentUserSnapshot.data ?? 0;
 
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,

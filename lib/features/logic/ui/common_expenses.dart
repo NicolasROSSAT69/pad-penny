@@ -66,21 +66,26 @@ class _CommonExpensesState extends State<CommonExpenses> {
                     final spend = spends[index];
                     final category = spend['category'];
                     final comment = spend['comment'].toString().toUpperCase();
-                    //final personfor = spend['personfor'].toString();
                     final tag = spend['tag'].toString().toUpperCase();
                     var value = double.parse(spend['value'].toString());
-
-                    // Diviser la valeur par 2 si personfor est égal à "Les deux"
-                    /*if (personfor == 'Les deux') {
-                      value = value / 2;
-                    }*/
 
                     return Card(
                       child: ListTile(
                         leading: Text("${value.toStringAsFixed(2)} €", style: GoogleFonts.poppins()),
                         title: Text('$category', style: GoogleFonts.poppins()),
                         subtitle: Text('$comment, $tag, payé par ${spend['payfor']}', style: GoogleFonts.poppins()),
-                        trailing: const Icon(Icons.info),
+                        trailing: IconButton(
+                          icon: const Icon(Icons.delete),
+                          tooltip: 'Supprimer',
+                          onPressed: () async {
+                            final docId = spends[index].id;
+                            await FirebaseFirestore.instance.collection('spend').doc(docId).delete();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text("Dépense supprimée")),
+                            );
+                            setState(() {}); // rafraîchir la vue
+                          },
+                        ),
                       ),
                     );
                   },
@@ -88,19 +93,8 @@ class _CommonExpensesState extends State<CommonExpenses> {
               ),
             ],
           );
-
         },
       ),
     );
-    /*Column(
-      children: [
-        const Text("Mes dépenses"),
-        Consumer<UserModel>(
-          builder: (context, userModel, child) {
-          return Text("Utilisateur: ${userModel.userId}");
-        },
-        )
-      ],
-    );*/
   }
 }
