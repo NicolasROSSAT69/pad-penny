@@ -81,7 +81,18 @@ class _MySpendState extends State<MySpend> {
                         leading: Text("${value.toStringAsFixed(2)} €", style: GoogleFonts.poppins()),
                         title: Text('$category', style: GoogleFonts.poppins()),
                         subtitle: Text('$comment, $tag', style: GoogleFonts.poppins()),
-                        trailing: const Icon(Icons.info),
+                        trailing: IconButton(
+                          icon: const Icon(Icons.delete),
+                          tooltip: 'Supprimer',
+                          onPressed: () async {
+                            final docId = spends[index].id;
+                            await FirebaseFirestore.instance.collection('spend').doc(docId).delete();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text("Dépense supprimée")),
+                            );
+                            setState(() {}); // rafraîchir la vue
+                          },
+                        ),
                       ),
                     );
                   },
