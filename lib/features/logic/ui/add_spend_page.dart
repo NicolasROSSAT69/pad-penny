@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -55,9 +56,14 @@ class _AddSpendPageState extends State<AddSpendPage> {
                         hintStyle: GoogleFonts.poppins(),
                         border: const OutlineInputBorder()
                     ),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return "Tu dois compléter ce texte";
+                        return "Ce champ est requis";
+                      }
+                      if (!RegExp(r'^\d+(\.\d+)?$').hasMatch(value)) {
+                        return "Seuls les chiffres sont autorisés";
                       }
                       return null;
                     },
@@ -76,7 +82,7 @@ class _AddSpendPageState extends State<AddSpendPage> {
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return "Tu dois compléter ce texte";
+                        return "Ce champ est requis";
                       }
                       return null;
                     },
