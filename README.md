@@ -1,6 +1,6 @@
 # pad_penny
 
-Application Flutter, Firebase degestion de budget à plusieurs
+Application Flutter, Firebase de gestion de budget à plusieurs
 
 ## Getting Started
 
