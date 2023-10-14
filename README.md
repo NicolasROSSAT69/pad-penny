@@ -1,6 +1,6 @@
 # pad_penny
 
-A new Flutter project.
+Application Flutter, Firebase degestion de budget à plusieurs
 
 ## Getting Started
 
